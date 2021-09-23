@@ -21,6 +21,10 @@
         "phpunit/php-code-coverage": "^9.2",
         "phpunit/phpunit": "^9.3.3"
     },
+    "suggest": {
+        "coduo/php-humanizer": "Humanize values that are readable only for developers",
+        "laravel/dusk": "Laravel Dusk provides simple end-to-end testing and browser automation"
+    },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
@@ -51,9 +55,5 @@
         "coverage": "./vendor/bin/phpunit --coverage-html coverage",
         "fix": "./vendor/bin/php-cs-fixer --verbose --show-progress=dots fix",
         "test": "./vendor/bin/phpunit --color=always -vvv"
-    },
-    "suggest": {
-        "coduo/php-humanizer": "Humanize values that are readable only for developers",
-        "laravel/dusk": "Laravel Dusk provides simple end-to-end testing and browser automation"
     }
 }
