@@ -61,7 +61,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Illuminate\Routing\Router
+    | Illuminate\Routing\Router Macros
     |--------------------------------------------------------------------------
     | livewireResource() is just a shortcut to have a resource with [index, create, show, edit] methods only
     | but if you want to install LiveWire
