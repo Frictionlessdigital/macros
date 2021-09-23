@@ -53,7 +53,7 @@
         "test": "./vendor/bin/phpunit --color=always -vvv"
     },
     "suggest": {
-        "coduo/php-humanizer": "Humanize values that are readable only for developers.",
-        "laravel/dusk": "Laravel Dusk provides simple end-to-end testing and browser automation."
+        "coduo/php-humanizer": "Humanize values that are readable only for developers",
+        "laravel/dusk": "Laravel Dusk provides simple end-to-end testing and browser automation"
     }
 }
