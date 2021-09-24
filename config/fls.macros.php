@@ -51,8 +51,7 @@ return [
     |--------------------------------------------------------------------------
     | Illuminate\Database\Eloquent\Factories\Factory Macros
     |--------------------------------------------------------------------------
-    | oxford() required Coduo\Humanize package
-    | composer require coduo/php-humanizer
+    | Enabled by default
     |
     */
     Factory::class => [
