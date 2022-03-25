@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
@@ -33,6 +34,19 @@ return [
     */
     Builder::class => [
         'toSqlWithBindings' => \Fls\Macros\Macros\Builder\ToSqlWithBindings::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Carbon\Carbon
+    |--------------------------------------------------------------------------
+    | startOfFiscalYear($at = null) will return the return of fiscal year
+    |
+    */
+    Carbon::class => [
+        'startOfFiscalYear' => \Fls\Macros\Macros\Carbon\StartOfFiscalYear::class,
+        'endOfFiscalYear' => \Fls\Macros\Macros\Carbon\EndOfFiscalYear::class,
+        'isFiscalYear' => \Fls\Macros\Macros\Carbon\IsFiscalYear::class,
     ],
 
     /*
