@@ -3,7 +3,6 @@
 namespace Fls\Macros\Macros\Carbon;
 
 use Carbon\Carbon;
-use function is_null;
 
 /**
  * @mixin \Carbon\Carbon
@@ -18,23 +17,23 @@ class StartOfFiscalYear
     public function __invoke()
     {
         $self = $this;
+
         /*
-         * @param \DateTimeInterface|\Carbon\Carbon|null $at
          * @return \Carbon\Carbon
          */
-        return function ($at = null) use (&$self): Carbon {
+        return function () use (&$self): Carbon {
             // parse argument
-            $value = is_null($at) ? (self::this() instanceof Carbon ? self::this() : Carbon::now()) : Carbon::parse($at);
+            $value = self::this() instanceof Carbon ? self::this() : self::now();
             // adjust the clock, if set up needs it
             if ($self->mayNeedToAdjustYearForFiscalYearCalculation() and $value->month < $self->fiscalYearStartsIn()) {
                 // the difference in year is only needed if we are before the start of year
                 // sub one year
                 $value->subYear();
             }
-            // return
+            // firstm rewind to start of month to avoid spill-overs
             return $value
-                ->month($self->fiscalYearStartsIn())
-                ->startOfMonth();
+                ->startOfMonth()
+                ->month($self->fiscalYearStartsIn());
         };
     }
 }

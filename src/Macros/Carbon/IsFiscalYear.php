@@ -17,6 +17,7 @@ class IsFiscalYear
     public function __invoke()
     {
         $self = $this;
+
         /*
          * @param int $year
          * @return bool

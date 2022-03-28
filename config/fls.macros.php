@@ -44,6 +44,7 @@ return [
     |
     */
     Carbon::class => [
+        'fiscalYearForHumans' => \Fls\Macros\Macros\Carbon\FiscalYearForHumans::class,
         'startOfFiscalYear' => \Fls\Macros\Macros\Carbon\StartOfFiscalYear::class,
         'endOfFiscalYear' => \Fls\Macros\Macros\Carbon\EndOfFiscalYear::class,
         'isFiscalYear' => \Fls\Macros\Macros\Carbon\IsFiscalYear::class,
