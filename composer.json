@@ -1,16 +1,16 @@
 {
     "name": "frictionlessdigital/macros",
-    "type": "project",
     "description": "Frictionless Solutions | Macros",
+    "license": "MIT",
+    "type": "project",
     "keywords": [
         "fls",
         "laravel",
         "macros"
     ],
-    "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
-        "illuminate/support": "^8.0 | ^9.0",
+        "illuminate/support": "^8.0 || ^9.0",
         "spatie/laravel-package-tools": "^1.11"
     },
     "require-dev": {
@@ -18,15 +18,27 @@
         "friendsofphp/php-cs-fixer": "^3.0",
         "mockery/mockery": "^1.4.2",
         "nesbot/carbon": "^2.57",
-        "nunomaduro/larastan": "^0.7.4 | ^1.0",
+        "nunomaduro/larastan": "^0.7.4 || ^1.0",
         "orchestra/testbench": "^6.0",
         "phpunit/php-code-coverage": "^9.2",
         "phpunit/phpunit": "^9.5"
     },
     "suggest": {
-        "laravel/dusk": "Laravel Dusk provides simple end-to-end testing and browser automation",
+        "coduo/php-humanizer": "Humanize values that are readable only for developers",
         "frictionlessdigital/uuidable": "Add UUID behavior to your Eloquent models.",
-        "coduo/php-humanizer": "Humanize values that are readable only for developers"
+        "laravel/dusk": "Laravel Dusk provides simple end-to-end testing and browser automation"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Fls\\Macros\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fls\\Macros\\Tests\\": "tests/"
+        }
     },
     "config": {
         "optimize-autoloader": true,
@@ -43,18 +55,6 @@
             ]
         }
     },
-    "autoload": {
-        "psr-4": {
-            "Fls\\Macros\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Fls\\Macros\\Tests\\": "tests/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "analyze": "./vendor/bin/phpstan analyse src tests --memory-limit=2G",
         "coverage": "./vendor/bin/phpunit --coverage-html coverage",
