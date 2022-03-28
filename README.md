@@ -16,7 +16,9 @@ To publish configuration file, run
 
 THe package will publish `fls.macros.php` file:
 ```php
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
 use Illuminate\Routing\Router;
 use Laravel\Dusk\Browser;
@@ -52,6 +54,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Carbon\Carbon
+    |--------------------------------------------------------------------------
+    | startOfFiscalYear($at = null) will return the return of fiscal year
+    |
+    */
+    Carbon::class => [
+        'fiscalYearForHumans' => \Fls\Macros\Macros\Carbon\FiscalYearForHumans::class,
+        'startOfFiscalYear' => \Fls\Macros\Macros\Carbon\StartOfFiscalYear::class,
+        'endOfFiscalYear' => \Fls\Macros\Macros\Carbon\EndOfFiscalYear::class,
+        'isFiscalYear' => \Fls\Macros\Macros\Carbon\IsFiscalYear::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Illuminate\Support\Collection
     |--------------------------------------------------------------------------
     | oxford() required Coduo\Humanize package
@@ -75,7 +91,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Illuminate\Routing\Router
+    | Illuminate\Routing\Router Macros
     |--------------------------------------------------------------------------
     | livewireResource() is just a shortcut to have a resource with [index, create, show, edit] methods only
     | but if you want to install LiveWire
@@ -123,7 +139,45 @@ and add to `config\app.php`:
 
 ## Usage
 
-The package offers extension for Builder, Router, Collection and Dusk Browser.
+The package offers extension for Builder, Carbon, Router, Collection and Dusk Browser.
+
+### \Carbon\Carbon Macros
+
+**fiscalYearForHumans($formatter=null)**
+will get readable representation for the fiscal year. 
+```php
+$x = Carbon::now()->fiscalYearForHumans()
+// $x = 'Fiscal year ending March 31, 2022'; 
+```
+`fiscalYearForHumans` accepts closure formatter:
+```php
+$x = Carbon::now()->fiscalYearForHumans(fn($at) => new HtmlString('<b>'.$at->year.'</b>'));
+// $x = HtmlString('<b>2022</b>'); 
+```
+
+**startOfFiscalYear**
+will modify the date to the start of the fiscal year
+```php
+Carbon::startOfFiscalYear();
+// Carbon instance at April 1, 2021 0:0:0; 
+```
+
+**endOfFiscalYear**
+will modify the date to the end of the fiscal year
+```php
+Carbon::endOfFiscalYear();
+// Carbon instance at March 31, 2022 25:59:59; 
+```
+
+**isFiscalYear** 
+Will check if the date is within the provided (int) fiscal year
+```php
+// assuming now is 
+Carbon::parse('March 31, 2022')->isFiscalYear(2021);
+// true
+Carbon::parse('April 1, 2022')->isFiscalYear(2021);
+// false
+```
 
 ### Laravel\Dusk\Browser Macros
 \*Requires Laravel Dusk:
