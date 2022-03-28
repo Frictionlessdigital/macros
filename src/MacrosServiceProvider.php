@@ -20,7 +20,7 @@ class MacrosServiceProvider extends PackageServiceProvider
     }
 
     /**
-     * Register macros
+     * Register macros.
      *
      * @return void
      */
