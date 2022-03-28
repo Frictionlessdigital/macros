@@ -14,7 +14,9 @@ Note that root namespace for the package is `Fls` not `Frictionlessdigital`.
 
 To publish configuration file, run
 
-THe package will publish `fls.macros.php` file:
+`php artisan vendor:publish --tag=fls.macros-config`
+
+The package will publish `fls.macros.php` file:
 ```php
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
