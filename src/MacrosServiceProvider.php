@@ -3,39 +3,35 @@
 namespace Fls\Macros;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\ServiceProvider;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class MacrosServiceProvider extends ServiceProvider
+class MacrosServiceProvider extends PackageServiceProvider
 {
     /**
-     * Bootstrap any application services.
-     *
+     * @param \Spatie\LaravelPackageTools\Package $package
      * @return void
      */
-    public function boot()
+    public function configurePackage(Package $package): void
     {
-        $this->publishes([
-            __DIR__ . '/../config/fls.macros.php' => config_path('fls.macros.php'),
-        ]);
+        $package
+            ->name('fls.macros')
+            ->hasConfigFile();
     }
 
     /**
-     * Register application services.
+     * Register macros.
      *
      * @return void
      */
-    public function register()
+    public function packageRegistered()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/fls.macros.php', 'fls.macros');
-
         $this->macroables()->each(function ($macros, $macroable) {
             $macros->each(fn ($class, $macro) => $macroable::macro($macro, app($class)()));
         });
     }
 
     /**
-     * Collect macros.
-     *
      * @return \Illuminate\Support\Collection
      */
     protected function macroables(): Collection
