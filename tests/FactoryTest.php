@@ -17,4 +17,16 @@ class FactoryTest extends TestCase
             'charlie' => null,
         ], $factory->toArray());
     }
+
+    /** @test */
+    public function is_will_return_a_defined_factory_with_provided_values()
+    {
+        $factory = DummyModel::factory()->empty('a')->make();
+
+        $this->assertEquals([
+            'name' => 'a',
+            'word' => 'a',
+            'charlie' => 'a',
+        ], $factory->toArray());
+    }
 }
