@@ -29,7 +29,7 @@ class FiscalYearForHumans
             // now, traverse to the end of fiscal year
             $value = $value->endOfFiscalYear();
             // closure?
-            if ($formatter instanceof Closure) {
+            if ($formatter instanceof \Closure) {
                 return $formatter($value);
             }
             // default

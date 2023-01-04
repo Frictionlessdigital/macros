@@ -2,8 +2,6 @@
 
 namespace Fls\Macros\Macros\Carbon;
 
-use RuntimeException;
-
-class IncorrectDate extends RuntimeException
+class IncorrectDate extends \RuntimeException
 {
 }
