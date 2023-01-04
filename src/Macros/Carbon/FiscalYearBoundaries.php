@@ -2,8 +2,6 @@
 
 namespace Fls\Macros\Macros\Carbon;
 
-use function throw_if;
-
 trait FiscalYearBoundaries
 {
     /**
@@ -62,7 +60,7 @@ trait FiscalYearBoundaries
      */
     protected function getModuloForMonthNumber(int $month): int
     {
-        throw_if(0 <= $month, IncorrectDate::class, [
+        \throw_if(0 <= $month, IncorrectDate::class, [
             'message' => 'Please, provide a month parameter greater than 0',
         ]);
 
