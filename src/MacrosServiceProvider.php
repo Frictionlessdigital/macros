@@ -26,7 +26,7 @@ class MacrosServiceProvider extends PackageServiceProvider
      */
     public function packageRegistered()
     {
-        $this->macroables()->each(function ($macros, $macroable) {
+        $this->macroables()->each(function (Collection $macros, $macroable) {
             $macros->each(fn ($class, $macro) => $macroable::macro($macro, app($class)()));
         });
     }

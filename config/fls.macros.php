@@ -3,8 +3,10 @@
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Collection;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+use Illuminate\Support\Stringable;
 use Laravel\Dusk\Browser;
 
 return [
@@ -84,5 +86,27 @@ return [
     */
     Router::class => [
         'livewireResource' => \Fls\Macros\Macros\Router\LiveResource::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Illuminate\Support\Str macros
+    |--------------------------------------------------------------------------
+    | safeFilename() will ensure the argument can be used as a filename
+    |
+    */
+    Str::class => [
+        'safeFilename' => \Fls\Macros\Macros\Str\SafeFilename::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Illuminate\Support\Stringable macros
+    |--------------------------------------------------------------------------
+    | safeFilename() will ensure the argument can be used as a filename
+    |
+    */
+    Stringable::class => [
+        'safeFilename' => \Fls\Macros\Macros\Stringable\SafeFilename::class,
     ],
 ];

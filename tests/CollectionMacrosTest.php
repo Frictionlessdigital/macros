@@ -2,10 +2,20 @@
 
 namespace Fls\Macros\Tests;
 
+use Fls\Macros\Macros\Collection\Oxford;
 use Fls\Macros\Tests\Fixtures\DummyModel;
+use Illuminate\Support\Collection;
 
 class CollectionMacrosTest extends TestCase
 {
+    /** @return void */
+    public function setUp(): void
+    {
+        parent::setUp();
+        // it is disabled by default, as it requires coduo/php-humanizer
+        Collection::macro('ofxord', app(Oxford::class)());
+    }
+
     /** @test */
     public function it_will_add_oxford_comma_to_list_of_simple_values()
     {
