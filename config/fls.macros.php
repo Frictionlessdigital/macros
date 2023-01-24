@@ -96,7 +96,9 @@ return [
     |
     */
     Str::class => [
+        'toBase64' => \Fls\Macros\Macros\Str\ToBase64::class,
         'safeFilename' => \Fls\Macros\Macros\Str\SafeFilename::class,
+        'fromBase64' => \Fls\Macros\Macros\Str\FromBase64::class,
     ],
 
     /*
@@ -107,6 +109,8 @@ return [
     |
     */
     Stringable::class => [
+        'fromBase64' => \Fls\Macros\Macros\Stringable\FromBase64::class,
         'safeFilename' => \Fls\Macros\Macros\Stringable\SafeFilename::class,
+        'toBase64' => \Fls\Macros\Macros\Stringable\ToBase64::class,
     ],
 ];
