@@ -119,8 +119,7 @@ return [
     |--------------------------------------------------------------------------
     | \Illuminate\Http\UploadedFile
     |--------------------------------------------------------------------------
-    | MakeSafeUploadName() will sanitize the string to be an acceptable filename
-    | MakeSafeClientOriginalName() will sanitize the string to be an acceptable label
+    | saveOnDisk() will upload the file on disk
     */
     UploadedFile::class => [
         'saveOnDisk' => \Fls\Macros\Macros\UploadedFile\SaveOnDisk::class,
