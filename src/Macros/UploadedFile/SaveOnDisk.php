@@ -2,7 +2,7 @@
 
 namespace Fls\Macros\Macros\UploadedFile;
 
-use App\Exceptions\DocumentUploadException;
+use Fls\Macros\Macros\UploadedFile\Exceptions\UploadedFileException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -27,7 +27,7 @@ class SaveOnDisk
 
             throw_unless(
                 Storage::disk($disk)->exists($destination),
-                new DocumentUploadException('Failed to upload document. Please try again - or reach to support', 500)
+                UploadedFileException::uploadFailed($this->getClientOriginalName())
             );
 
             if (false === $returnAsArray) {
