@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -112,5 +113,15 @@ return [
         'fromBase64' => \Fls\Macros\Macros\Stringable\FromBase64::class,
         'safeFilename' => \Fls\Macros\Macros\Stringable\SafeFilename::class,
         'toBase64' => \Fls\Macros\Macros\Stringable\ToBase64::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | \Illuminate\Http\UploadedFile
+    |--------------------------------------------------------------------------
+    | saveOnDisk() will upload the file on disk
+    */
+    UploadedFile::class => [
+        'saveOnDisk' => \Fls\Macros\Macros\UploadedFile\SaveOnDisk::class,
     ],
 ];
