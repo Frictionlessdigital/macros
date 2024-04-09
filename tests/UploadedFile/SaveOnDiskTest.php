@@ -2,7 +2,7 @@
 
 namespace Fls\Macros\Tests\UploadedFile;
 
-use App\Exceptions\DocumentUploadException;
+use Fls\Macros\Macros\UploadedFile\Exceptions\UploadedFileException;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
@@ -106,8 +106,8 @@ class SaveOnDiskTest extends TestCase
             ->with('2023/abc-123-customer.csv')
             ->andReturnFalse();
 
-        $this->expectException(DocumentUploadException::class);
-        $this->expectExceptionMessage('Failed to upload document. Please try again - or reach to support');
+        $this->expectException(UploadedFileException::class);
+        $this->expectExceptionMessage('Failed to upload document - customer.csv. Please try again - or reach to support');
 
         $file->saveOnDisk('local');
     }
