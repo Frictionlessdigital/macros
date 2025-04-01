@@ -17,7 +17,6 @@ class SaveOnDisk
     public function __invoke()
     {
         return function (?string $disk = null, ?string $filename = null, bool $returnAsArray = true) {
-
             $disk = $disk ?? config('filesystems.default');
 
             $name = Str::uuid() . '-' . ($filename ?? $this->getClientOriginalName());

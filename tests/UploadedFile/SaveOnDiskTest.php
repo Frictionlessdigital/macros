@@ -3,11 +3,11 @@
 namespace Fls\Macros\Tests\UploadedFile;
 
 use Fls\Macros\Macros\UploadedFile\Exceptions\UploadedFileException;
+use Fls\Macros\Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Fls\Macros\Tests\TestCase;
+use Illuminate\Support\Str;
 
 class SaveOnDiskTest extends TestCase
 {
