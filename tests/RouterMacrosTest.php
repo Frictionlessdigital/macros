@@ -4,10 +4,11 @@ namespace Fls\Macros\Tests;
 
 use Fls\Macros\Tests\Fixtures\LivewireResourceController;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\Test;
 
 class RouterMacrosTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_will_register_livewire_resource()
     {
         Route::livewireResource('tests', LivewireResourceController::class);
@@ -34,7 +35,7 @@ class RouterMacrosTest extends TestCase
         $this->assertEquals(405, $this->delete('/tests/1')->getStatusCode());
     }
 
-    /** @test */
+    #[Test]
     public function it_will_register_livewire_resource_with_only()
     {
         Route::livewireResource('tests', LivewireResourceController::class)->only(['index']);
@@ -52,7 +53,7 @@ class RouterMacrosTest extends TestCase
         $this->assertEquals(404, $this->delete('/tests/1')->getStatusCode());
     }
 
-    /** @test */
+    #[Test]
     public function it_will_register_livewire_resource_with_except_as_argument()
     {
         Route::livewireResource('tests', LivewireResourceController::class, [

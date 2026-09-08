@@ -16,17 +16,28 @@ class Oxford
     public function __invoke()
     {
         /*
-         * @param mixed $key
          * @param int|null $limit
          * @param string $locale
+         *
+         * @var \Illuminate\Support\Collection $this
+         *
          * @return string
          */
-        return function ($key, ?int $limit = null, string $locale = 'en') {
-            // fetch values
-            $values = $this->pluck($key)->filter()->unique()->values()->all();
+        return function (?int $limit = null, string $locale = 'en') {
+            $values = $this->filter()->unique()->values();
+            $count = $values->count();
 
-            // oxfordize
-            return CollectionHumanizer::oxford($values, $limit, $locale);
+            $limit = match (true) {
+                min($limit, $count) == $count => null,
+                $limit == $count => null,
+                default => $limit,
+            };
+
+            return CollectionHumanizer::oxford(
+                collection: $values->all(),
+                limit: $limit,
+                locale: $locale
+            );
         };
     }
 }

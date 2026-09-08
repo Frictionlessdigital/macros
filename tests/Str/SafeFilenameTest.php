@@ -4,22 +4,18 @@ namespace Fls\Macros\Tests\Str;
 
 use Fls\Macros\Tests\TestCase;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 
 class SafeFilenameTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider  it_will_handle_various_strings_provider
-     */
+    #[Test] #[DataProvider('it_will_handle_various_strings_provider')]
     public function it_will_handle_various_strings(string $expected, string $string): void
     {
         $this->assertEquals($expected, Str::safeFilename($string, ' '));
     }
 
-    /**
-     * @return array[]
-     */
-    public function it_will_handle_various_strings_provider(): array
+    public static function it_will_handle_various_strings_provider(): array
     {
         return [
             'regular string' => [

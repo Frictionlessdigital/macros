@@ -8,6 +8,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\Test;
 
 class SaveOnDiskTest extends TestCase
 {
@@ -28,7 +29,7 @@ class SaveOnDiskTest extends TestCase
         Carbon::setTestNow('May 17, 2023 2:13 PM');
     }
 
-    /** @test */
+    #[Test]
     public function it_will_store_uploaded_file_on_default_disk(): void
     {
         $file = UploadedFile::fake()->createWithContent('customer.csv', 'id;name;group\n9999;Customer1;');
@@ -46,7 +47,7 @@ class SaveOnDiskTest extends TestCase
         ], $result);
     }
 
-    /** @test */
+    #[Test]
     public function it_will_store_uploaded_file_on_specified_disk(): void
     {
         $file = UploadedFile::fake()->createWithContent('customer.csv', 'id;name;group\n9999;Customer1;');
@@ -64,7 +65,7 @@ class SaveOnDiskTest extends TestCase
         ], $result);
     }
 
-    /** @test */
+    #[Test]
     public function it_will_store_uploaded_file_witth_specified_file_name(): void
     {
         $file = UploadedFile::fake()->createWithContent('customer.csv', 'id;name;group\n9999;Customer1;');
@@ -82,7 +83,7 @@ class SaveOnDiskTest extends TestCase
         ], $result);
     }
 
-    /** @test */
+    #[Test]
     public function it_will_store_uploaded_file_and_return_destination(): void
     {
         $file = UploadedFile::fake()->createWithContent('customer.csv', 'id;name;group\n9999;Customer1;');
@@ -92,7 +93,7 @@ class SaveOnDiskTest extends TestCase
         $this->assertEquals('2023/abc-123-customer.csv', $result);
     }
 
-    /** @test */
+    #[Test]
     public function it_will_generate_exception_if_file_not_stored(): void
     {
         $file = UploadedFile::fake()->createWithContent('customer.csv', 'id;name;group\n9999;Customer1;');
