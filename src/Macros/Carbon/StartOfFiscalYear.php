@@ -5,7 +5,7 @@ namespace Fls\Macros\Macros\Carbon;
 use Carbon\Carbon;
 
 /**
- * @mixin \Carbon\Carbon
+ * @mixin Carbon
  */
 class StartOfFiscalYear
 {
@@ -30,6 +30,7 @@ class StartOfFiscalYear
                 // sub one year
                 $value->subYear();
             }
+
             // firstm rewind to start of month to avoid spill-overs
             return $value
                 ->startOfMonth()

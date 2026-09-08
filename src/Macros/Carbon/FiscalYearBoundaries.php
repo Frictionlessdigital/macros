@@ -20,9 +20,9 @@ trait FiscalYearBoundaries
      * @param int|null $month
      * @return int|$this
      */
-    public function fiscalYearStartsIn(int $month = null)
+    public function fiscalYearStartsIn(?int $month = null)
     {
-        if (null === $month) {
+        if ($month === null) {
             return $this->fiscalYearStartsIn;
         }
 
@@ -35,9 +35,9 @@ trait FiscalYearBoundaries
      * @param int|null $month
      * @return int|$this
      */
-    public function fiscalYearEndsIn(int $month = null)
+    public function fiscalYearEndsIn(?int $month = null)
     {
-        if (null === $month) {
+        if ($month === null) {
             return $this->fiscalYearEndsIn;
         }
 
@@ -51,7 +51,7 @@ trait FiscalYearBoundaries
      */
     public function mayNeedToAdjustYearForFiscalYearCalculation(): bool
     {
-        return 12 != $this->fiscalYearEndsIn() - $this->fiscalYearStartsIn() + 1;
+        return $this->fiscalYearEndsIn() - $this->fiscalYearStartsIn() + 1 != 12;
     }
 
     /**
@@ -60,7 +60,7 @@ trait FiscalYearBoundaries
      */
     protected function getModuloForMonthNumber(int $month): int
     {
-        \throw_if(0 <= $month, IncorrectDate::class, [
+        \throw_if($month >= 0, IncorrectDate::class, [
             'message' => 'Please, provide a month parameter greater than 0',
         ]);
 

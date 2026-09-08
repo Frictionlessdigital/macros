@@ -3,9 +3,10 @@
 namespace Fls\Macros\Macros\Collection;
 
 use Coduo\PHPHumanizer\CollectionHumanizer;
+use Illuminate\Support\Collection;
 
 /**
- * @mixin \Illuminate\Support\Collection
+ * @mixin Collection
  */
 class Oxford
 {
@@ -20,9 +21,10 @@ class Oxford
          * @param string $locale
          * @return string
          */
-        return function ($key, int $limit = null, string $locale = 'en') {
+        return function ($key, ?int $limit = null, string $locale = 'en') {
             // fetch values
             $values = $this->pluck($key)->filter()->unique()->values()->all();
+
             // oxfordize
             return CollectionHumanizer::oxford($values, $limit, $locale);
         };

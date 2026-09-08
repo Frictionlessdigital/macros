@@ -1,6 +1,17 @@
 <?php
 
 use Carbon\Carbon;
+use Fls\Macros\Macros\Builder\ToSqlWithBindings;
+use Fls\Macros\Macros\Carbon\EndOfFiscalYear;
+use Fls\Macros\Macros\Carbon\FiscalYearForHumans;
+use Fls\Macros\Macros\Carbon\IsFiscalYear;
+use Fls\Macros\Macros\Carbon\StartOfFiscalYear;
+use Fls\Macros\Macros\Factory\EmptyFactory;
+use Fls\Macros\Macros\Router\LiveResource;
+use Fls\Macros\Macros\Str\FromBase64;
+use Fls\Macros\Macros\Str\SafeFilename;
+use Fls\Macros\Macros\Str\ToBase64;
+use Fls\Macros\Macros\UploadedFile\SaveOnDisk;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Http\UploadedFile;
@@ -36,7 +47,7 @@ return [
     |
     */
     Builder::class => [
-        'toSqlWithBindings' => \Fls\Macros\Macros\Builder\ToSqlWithBindings::class,
+        'toSqlWithBindings' => ToSqlWithBindings::class,
     ],
 
     /*
@@ -47,10 +58,10 @@ return [
     |
     */
     Carbon::class => [
-        'fiscalYearForHumans' => \Fls\Macros\Macros\Carbon\FiscalYearForHumans::class,
-        'startOfFiscalYear' => \Fls\Macros\Macros\Carbon\StartOfFiscalYear::class,
-        'endOfFiscalYear' => \Fls\Macros\Macros\Carbon\EndOfFiscalYear::class,
-        'isFiscalYear' => \Fls\Macros\Macros\Carbon\IsFiscalYear::class,
+        'fiscalYearForHumans' => FiscalYearForHumans::class,
+        'startOfFiscalYear' => StartOfFiscalYear::class,
+        'endOfFiscalYear' => EndOfFiscalYear::class,
+        'isFiscalYear' => IsFiscalYear::class,
     ],
 
     /*
@@ -73,7 +84,7 @@ return [
     |
     */
     Factory::class => [
-        'empty' => \Fls\Macros\Macros\Factory\EmptyFactory::class,
+        'empty' => EmptyFactory::class,
     ],
 
     /*
@@ -86,7 +97,7 @@ return [
     |
     */
     Router::class => [
-        'livewireResource' => \Fls\Macros\Macros\Router\LiveResource::class,
+        'livewireResource' => LiveResource::class,
     ],
 
     /*
@@ -97,9 +108,9 @@ return [
     |
     */
     Str::class => [
-        'toBase64' => \Fls\Macros\Macros\Str\ToBase64::class,
-        'safeFilename' => \Fls\Macros\Macros\Str\SafeFilename::class,
-        'fromBase64' => \Fls\Macros\Macros\Str\FromBase64::class,
+        'toBase64' => ToBase64::class,
+        'safeFilename' => SafeFilename::class,
+        'fromBase64' => FromBase64::class,
     ],
 
     /*
@@ -110,9 +121,9 @@ return [
     |
     */
     Stringable::class => [
-        'fromBase64' => \Fls\Macros\Macros\Stringable\FromBase64::class,
-        'safeFilename' => \Fls\Macros\Macros\Stringable\SafeFilename::class,
-        'toBase64' => \Fls\Macros\Macros\Stringable\ToBase64::class,
+        'fromBase64' => Fls\Macros\Macros\Stringable\FromBase64::class,
+        'safeFilename' => Fls\Macros\Macros\Stringable\SafeFilename::class,
+        'toBase64' => Fls\Macros\Macros\Stringable\ToBase64::class,
     ],
 
     /*
@@ -122,6 +133,6 @@ return [
     | saveOnDisk() will upload the file on disk
     */
     UploadedFile::class => [
-        'saveOnDisk' => \Fls\Macros\Macros\UploadedFile\SaveOnDisk::class,
+        'saveOnDisk' => SaveOnDisk::class,
     ],
 ];

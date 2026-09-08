@@ -57,7 +57,7 @@ class RouterMacrosTest extends TestCase
     {
         Route::livewireResource('tests', LivewireResourceController::class, [
             'except' => ['index'],
-       ]);
+        ]);
 
         $this->assertEquals(404, $this->get('/tests')->getStatusCode());
 

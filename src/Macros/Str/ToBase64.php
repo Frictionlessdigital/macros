@@ -2,10 +2,12 @@
 
 namespace Fls\Macros\Macros\Str;
 
+use Illuminate\Support\Str;
+
 /**
  * Encode a string as base64.
  *
- * @mixin \Illuminate\Support\Str
+ * @mixin Str
  *
  * @param string $filename
  * @param string $placeholder
