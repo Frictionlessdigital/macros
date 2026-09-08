@@ -74,6 +74,7 @@ return [
     */
     Collection::class => [
         // 'ofxord' => \Fls\Macros\Macros\Collection\Oxford::class,
+        // 'ofxordByKey' => \Fls\Macros\Macros\Collection\OxfordByKey::class,
     ],
 
     /*
