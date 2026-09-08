@@ -5,23 +5,19 @@ namespace Fls\Macros\Tests\Stringable;
 use Fls\Macros\Tests\TestCase;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 
 class FromBase64Test extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider  it_will_handle_various_strings_provider
-     */
+    #[Test] #[DataProvider('it_will_handle_various_strings_provider')]
     public function it_will_handle_various_strings(string $expected, string $string): void
     {
         $this->assertInstanceOf(Stringable::class, Str::of($string)->fromBase64());
         $this->assertEquals($expected, (string) Str::of($string)->fromBase64());
     }
 
-    /**
-     * @return array[]
-     */
-    public function it_will_handle_various_strings_provider(): array
+    public static function it_will_handle_various_strings_provider(): array
     {
         return [
             'regular string' => [

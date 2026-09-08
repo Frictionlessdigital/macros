@@ -3,10 +3,11 @@
 namespace Fls\Macros\Tests;
 
 use Fls\Macros\Tests\Fixtures\DummyModel;
+use PHPUnit\Framework\Attributes\Test;
 
 class BuilderMacrosTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_will_resolve_builder_to_sql_with_bindings()
     {
         $builder = DummyModel::make()->newModelQuery();
