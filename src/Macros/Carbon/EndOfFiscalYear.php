@@ -5,7 +5,7 @@ namespace Fls\Macros\Macros\Carbon;
 use Carbon\Carbon;
 
 /**
- * @mixin \Carbon\Carbon
+ * @mixin Carbon
  */
 class EndOfFiscalYear
 {
@@ -30,6 +30,7 @@ class EndOfFiscalYear
                 // add one year
                 $value->addYear();
             }
+
             // return
             return $value
                 ->month($self->fiscalYearEndsIn())

@@ -9,7 +9,7 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 class MacrosServiceProvider extends PackageServiceProvider
 {
     /**
-     * @param \Spatie\LaravelPackageTools\Package $package
+     * @param Package $package
      * @return void
      */
     public function configurePackage(Package $package): void
@@ -32,7 +32,7 @@ class MacrosServiceProvider extends PackageServiceProvider
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     protected function macroables(): Collection
     {

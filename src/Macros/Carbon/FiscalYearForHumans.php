@@ -6,14 +6,14 @@ use Carbon\Carbon;
 use Closure;
 
 /**
- * @mixin \Carbon\Carbon
+ * @mixin Carbon
  */
 class FiscalYearForHumans
 {
     use FiscalYearBoundaries;
 
     /**
-     * @return \Closure
+     * @return Closure
      */
     public function __invoke()
     {
@@ -29,9 +29,10 @@ class FiscalYearForHumans
             // now, traverse to the end of fiscal year
             $value = $value->endOfFiscalYear();
             // closure?
-            if ($formatter instanceof \Closure) {
+            if ($formatter instanceof Closure) {
                 return $formatter($value);
             }
+
             // default
             return __('Fiscal year ending :at', ['at' => $value->format('F j, Y')]);
         };

@@ -13,7 +13,7 @@ class BuilderMacrosTest extends TestCase
 
         $builder->where('ALPHA', '=', 1)->whereIn('bravo', [2, 'b'])->whereNull('charlie');
 
-        $expected = <<<END
+        $expected = <<<'END'
 select * from "dummy_models" where "ALPHA" = 1 and "bravo" in (2, 'b') and "charlie" is null
 END;
 

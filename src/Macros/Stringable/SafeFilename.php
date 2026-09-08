@@ -3,13 +3,14 @@
 namespace Fls\Macros\Macros\Stringable;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Stringable;
 
 /**
  * Sanitize the string to be a safe filename.
  *
  * @param string $placeholder
- * @mixin \Illuminate\Support\Stringable
- * @return \Illuminate\Support\Stringable
+ * @mixin Stringable
+ * @return Stringable
  */
 class SafeFilename
 {

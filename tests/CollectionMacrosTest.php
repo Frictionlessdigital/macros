@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 class CollectionMacrosTest extends TestCase
 {
     /** @return void */
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         // it is disabled by default, as it requires coduo/php-humanizer

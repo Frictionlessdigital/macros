@@ -3,11 +3,12 @@
 namespace Fls\Macros\Macros\UploadedFile;
 
 use Fls\Macros\Macros\UploadedFile\Exceptions\UploadedFileException;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
- * @mixin \Illuminate\Http\UploadedFile
+ * @mixin UploadedFile
  */
 class SaveOnDisk
 {
@@ -29,7 +30,7 @@ class SaveOnDisk
                 UploadedFileException::uploadFailed($this->getClientOriginalName())
             );
 
-            if (false === $returnAsArray) {
+            if ($returnAsArray === false) {
                 return $destination;
             }
 

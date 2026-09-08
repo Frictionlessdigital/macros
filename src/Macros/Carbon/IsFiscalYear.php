@@ -5,7 +5,7 @@ namespace Fls\Macros\Macros\Carbon;
 use Carbon\Carbon;
 
 /**
- * @mixin \Carbon\Carbon
+ * @mixin Carbon
  */
 class IsFiscalYear
 {

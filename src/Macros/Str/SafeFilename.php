@@ -2,10 +2,12 @@
 
 namespace Fls\Macros\Macros\Str;
 
+use Illuminate\Support\Str;
+
 /**
  * Sanitize the string to be a safe filename.
  *
- * @mixin \Illuminate\Support\Str
+ * @mixin Str
  *
  * @param string $filename
  * @param string $placeholder
@@ -24,7 +26,9 @@ class SafeFilename
                 [#\[\]@!$&\'()+,;=]|     # URI reserved https://www.rfc-editor.org/rfc/rfc3986#section-2.2
                 [{}^\~`]                 # URL unsafe characters https://www.ietf.org/rfc/rfc1738.txt
                 ~x',
-                $placeholder, $filename);
+                $placeholder,
+                $filename
+            );
             // avoids ".", ".." or ".hiddenFiles"
             $filename = ltrim($filename, '.-');
             // "file   name.zip" becomes "file-name.zip"
@@ -34,6 +38,7 @@ class SafeFilename
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             // now, cut
             $filename = mb_strcut(pathinfo($filename, PATHINFO_FILENAME), 0, 255 - ($ext ? strlen($ext) + 1 : 0), mb_detect_encoding($filename)) . ($ext ? '.' . $ext : '');
+
             // return
             return $filename;
         };

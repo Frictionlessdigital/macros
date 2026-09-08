@@ -3,13 +3,14 @@
 namespace Fls\Macros\Macros\Stringable;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Stringable;
 
 /**
  * Encode the string into base64.
  *
  * @param string $string
- * @mixin \Illuminate\Support\Stringable
- * @return \Illuminate\Support\Stringable
+ * @mixin Stringable
+ * @return Stringable
  */
 class ToBase64
 {
