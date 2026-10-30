@@ -9,6 +9,7 @@ use Fls\Macros\Macros\Carbon\StartOfFiscalYear;
 use Fls\Macros\Macros\Factory\EmptyFactory;
 use Fls\Macros\Macros\Router\LiveResource;
 use Fls\Macros\Macros\Str\FromBase64;
+use Fls\Macros\Macros\Str\NcSlug;
 use Fls\Macros\Macros\Str\SafeFilename;
 use Fls\Macros\Macros\Str\ToBase64;
 use Fls\Macros\Macros\UploadedFile\SaveOnDisk;
@@ -112,6 +113,7 @@ return [
         'toBase64' => ToBase64::class,
         'safeFilename' => SafeFilename::class,
         'fromBase64' => FromBase64::class,
+        'ncSlug' => NcSlug::class,
     ],
 
     /*
@@ -125,6 +127,7 @@ return [
         'fromBase64' => Fls\Macros\Macros\Stringable\FromBase64::class,
         'safeFilename' => Fls\Macros\Macros\Stringable\SafeFilename::class,
         'toBase64' => Fls\Macros\Macros\Stringable\ToBase64::class,
+        'ncSlug' => Fls\Macros\Macros\Stringable\NcSlug::class,
     ],
 
     /*
