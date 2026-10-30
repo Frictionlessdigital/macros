@@ -8,10 +8,9 @@ use Fls\Macros\Macros\Carbon\IsFiscalYear;
 use Fls\Macros\Macros\Carbon\StartOfFiscalYear;
 use Fls\Macros\Macros\Factory\EmptyFactory;
 use Fls\Macros\Macros\Router\LiveResource;
-use Fls\Macros\Macros\Str\FromBase64;
 use Fls\Macros\Macros\Str\NcSlug;
+use Fls\Macros\Macros\Str\NumbersOnly;
 use Fls\Macros\Macros\Str\SafeFilename;
-use Fls\Macros\Macros\Str\ToBase64;
 use Fls\Macros\Macros\UploadedFile\SaveOnDisk;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -110,10 +109,9 @@ return [
     |
     */
     Str::class => [
-        'toBase64' => ToBase64::class,
-        'safeFilename' => SafeFilename::class,
-        'fromBase64' => FromBase64::class,
+        'numbersOnly' => NumbersOnly::class,
         'ncSlug' => NcSlug::class,
+        'safeFilename' => SafeFilename::class,
     ],
 
     /*
@@ -124,10 +122,9 @@ return [
     |
     */
     Stringable::class => [
-        'fromBase64' => Fls\Macros\Macros\Stringable\FromBase64::class,
-        'safeFilename' => Fls\Macros\Macros\Stringable\SafeFilename::class,
-        'toBase64' => Fls\Macros\Macros\Stringable\ToBase64::class,
         'ncSlug' => Fls\Macros\Macros\Stringable\NcSlug::class,
+        'numbersOnly' => Fls\Macros\Macros\Stringable\NumbersOnly::class,
+        'safeFilename' => Fls\Macros\Macros\Stringable\SafeFilename::class,
     ],
 
     /*

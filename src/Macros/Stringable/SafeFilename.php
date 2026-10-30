@@ -2,7 +2,7 @@
 
 namespace Fls\Macros\Macros\Stringable;
 
-use Illuminate\Support\Str;
+use Fls\Macros\Macros\Str\SafeFilename as StrSafeFilename;
 use Illuminate\Support\Stringable;
 
 /**
@@ -16,8 +16,12 @@ class SafeFilename
 {
     public function __invoke()
     {
-        return function ($placeholder = '') {
-            return new static(Str::safeFilename($this->value, $placeholder));
+        return function (string $placeholder = ''): Stringable {
+            /** @var Stringable $stringable */
+            $stringable = $this;
+            $sanitize = (new StrSafeFilename())();
+
+            return new Stringable($sanitize($stringable->value(), $placeholder));
         };
     }
 }

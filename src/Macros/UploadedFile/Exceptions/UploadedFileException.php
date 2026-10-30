@@ -5,15 +5,15 @@ namespace Fls\Macros\Macros\UploadedFile\Exceptions;
 class UploadedFileException extends \Exception
 {
     /**
-     * @param string $filename
-     * @return static
+     * @param string $fileName
+     * @return self
      */
-    public static function uploadFailed(string $fileName)
+    public static function uploadFailed(string $fileName): self
     {
         $message = __('Failed to upload document - :fileName. Please try again - or reach to support', [
             'fileName' => $fileName,
         ]);
 
-        return new static($message);
+        return new self($message);
     }
 }

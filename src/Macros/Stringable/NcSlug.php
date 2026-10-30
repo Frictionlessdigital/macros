@@ -15,7 +15,7 @@ class NcSlug
     public function __invoke()
     {
         return function (string $separator = '-') {
-            return new static(Str::ncSlug($this->value, $separator));
+            return new self(Str::ncSlug($this->value, $separator));
         };
     }
 }
